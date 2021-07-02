@@ -1,6 +1,7 @@
 package com.gaurav.PageObjects;
 
 import com.gaurav.Base.TestBase;
+import com.gaurav.CommonUtils.TestUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -52,7 +53,7 @@ public class SearchResults extends TestBase {
 
         wait.until(ExpectedConditions.attributeToBe(indigoFilterContainer, "title", "IndiGo"));
         indigoFilterLocator.click();
-        wait.until(ExpectedConditions.visibilityOf(flightFilterEnabled));
+        TestUtils.waitForVisibility(flightFilterEnabled);
         return flightFilterEnabled.getText();
     }
 
@@ -87,7 +88,7 @@ public class SearchResults extends TestBase {
      */
     public String EarlyFlightSelection() {
 
-        wait.until(ExpectedConditions.visibilityOf(flightTime));
+        TestUtils.waitForVisibility(flightTime);
         double earlyHour = getEarlyHour(flightTimingLocators, "early");
         String earlyHourAsString = "" + earlyHour;
         String earliestFlight = earlyHourAsString.replace(".", ":");
@@ -111,8 +112,7 @@ public class SearchResults extends TestBase {
      * @return Element text value of modal that appears after button is selected
      */
     public String bookFlight() {
-
-        wait.until(ExpectedConditions.visibilityOf(bookButton));
+        TestUtils.waitForVisibility(bookButton);
         bookButton.click();
         wait.until(ExpectedConditions.textToBePresentInElement(isBookButtonSelected, "You have more fares to select from"));
         return isBookButtonSelected.getText();

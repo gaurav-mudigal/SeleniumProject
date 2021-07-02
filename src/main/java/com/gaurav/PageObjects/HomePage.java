@@ -55,7 +55,7 @@ public class HomePage extends TestBase {
      * @return Title of the page
      */
     public String validateHomepage() {
-        wait.until(ExpectedConditions.visibilityOf(searchButton));
+        TestUtils.waitForVisibility(searchButton);
         return driver.getTitle();
     }
 
@@ -66,7 +66,7 @@ public class HomePage extends TestBase {
      */
     public String selectRoundTrip() {
         actions.moveByOffset(1, 1).click().perform();
-        wait.until(ExpectedConditions.elementToBeClickable(roundTrip));
+        TestUtils.waitForElementToBeClickable(roundTrip);
         roundTrip.click();
         return roundTripSelected.getAttribute("class");
     }
@@ -78,7 +78,7 @@ public class HomePage extends TestBase {
      * @return Value of from city
      */
     public String setFromCity(String city) {
-        wait.until(ExpectedConditions.elementToBeClickable(fromCity));
+        TestUtils.waitForElementToBeClickable(fromCity);
         fromCity.click();
         fromTextBox.sendKeys(city);
 
@@ -94,7 +94,7 @@ public class HomePage extends TestBase {
      */
     public String setToCity(String city) {
 
-        wait.until(ExpectedConditions.elementToBeClickable(toCityTextBox));
+        TestUtils.waitForElementToBeClickable(toCityTextBox);
         toCityTextBox.click();
         toCityTextBox.sendKeys(city);
 
@@ -109,7 +109,7 @@ public class HomePage extends TestBase {
      * @return Attribute of disabled search button class
      */
     public String searchFlights() {
-        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
+        TestUtils.waitForElementToBeClickable(searchButton);
         searchButton.click();
         return searchButtonDisabled.getAttribute("class");
     }
@@ -119,7 +119,7 @@ public class HomePage extends TestBase {
      * tomorrow's date by default
      */
     public void selectDeparture() {
-        wait.until(ExpectedConditions.elementToBeClickable(dateInCalendar));
+        TestUtils.waitForElementToBeClickable(dateInCalendar);
         driver.findElement(By.xpath("//div[contains(@aria-label,'" + TestUtils.getTomorrowDate() + "')]")).click();
     }
 

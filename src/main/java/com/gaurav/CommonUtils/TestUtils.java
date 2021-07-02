@@ -9,6 +9,8 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -60,6 +62,22 @@ public class TestUtils extends TestBase {
         } catch (IOException e) {
             System.out.println("Error while saving screenshot: " + e.getMessage());
         }
+    }
+
+    /**
+     * Waits for visibility of the element
+     * @param element Element for which wait mush be applied
+     */
+    public static void waitForVisibility(WebElement element){
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    /**
+     * Waits for element to be clickable
+     * @param element Element for which wait mush be applied
+     */
+    public static void waitForElementToBeClickable(WebElement element){
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     /**
