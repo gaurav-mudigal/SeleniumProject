@@ -1,7 +1,6 @@
 package com.gaurav.Base;
 
 import com.gaurav.CommonUtils.WebEventListener;
-import com.google.gson.JsonObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -83,22 +82,6 @@ public class TestBase {
         eventFiringDriver.register(webEventListener);
         driver = eventFiringDriver;
     }
-
-    /**
-     * Method for extracting required json object from json file
-     *
-     * @param jsonFileAsObject Json file as an object
-     * @param testPropertyKey  Specific key present in json object
-     * @return Value of the test property key
-     */
-    public static String getTestPropertyFromJson(JsonObject jsonFileAsObject, String testPropertyKey) {
-        String propertyValue = "";
-        if (jsonFileAsObject.has(testPropertyKey)) {
-            propertyValue = jsonFileAsObject.get(testPropertyKey).getAsString();
-        }
-        return propertyValue;
-    }
-
 
     /**
      * Launches the web page
