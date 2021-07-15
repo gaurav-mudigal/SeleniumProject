@@ -17,9 +17,6 @@ public class HomePage extends TestBase {
     @FindBy(xpath = "//li[text() = 'Round Trip']")
     private WebElement roundTrip;
 
-    @FindBy(xpath = "//li[text() = 'Round Trip']")
-    private WebElement roundTripSelected;
-
     @FindBy(xpath = "//input[@id= 'fromCity']")
     private WebElement fromCity;
 
@@ -68,7 +65,7 @@ public class HomePage extends TestBase {
         actions.moveByOffset(1, 1).click().perform();
         TestUtils.waitForElementToBeClickable(roundTrip);
         roundTrip.click();
-        return roundTripSelected.getAttribute("class");
+        return roundTrip.getAttribute("class");
     }
 
     /**
